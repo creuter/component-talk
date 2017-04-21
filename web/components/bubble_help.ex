@@ -46,4 +46,33 @@ defmodule Talk.Component do
       class: "bubble-help",
     )
   end
+
+  def open_modal_link(_, _, opts \\ [])
+
+  def open_modal_link(modal_name, opts, block) when is_list(opts) and is_list(block) do
+    content_tag(:a, opts ++ modal_options(modal_name), block)
+  end
+
+  def open_modal_link(text, modal_name, opts) do
+    content_tag(:a, text, opts ++ modal_options(modal_name))
+  end
+
+  defp modal_options(modal_name) do
+    [href: "#modal-#{modal_name}", rel: "modal:open"]
+  end
+  def modal(name, options \\ [], fun) do
+    options = name |> default_options |> merge(options)
+    content_tag(:div, options) do
+      fun.()
+    end
+  end
+  defp default_options(name) do
+    [id: "modal-#{name}", class: "modal", style: "display:none"]
+  end
+
+  defp merge(list1, list2) do
+    Keyword.merge list1, list2, fn (_, v1, v2) ->
+      v1 <> " " <> v2
+    end
+  end
 end
