@@ -33,4 +33,9 @@
       </li>
     </ul>
   </div>
+
+  <%= bubble_help do %>
+    <div>Help</div>
+  <% end %>
+
 </div>
