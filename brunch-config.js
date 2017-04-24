@@ -30,7 +30,15 @@ exports.config = {
   plugins: {
     babel: {
       ignore: [/web\/static\/vendor/]
-    }
+    },
+    sass: {
+      options: {
+        includePaths: [
+          "node_modules/bourbon/core/",
+          "node_modules/normalize.css",
+        ]
+      },
+    },
   },
 
   modules: {

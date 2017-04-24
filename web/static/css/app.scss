@@ -1,0 +1,16 @@
+@import "normalize";
+@import "bourbon";
+
+@import "base/base";
+@import "bubble-help";
+
+.container {
+  @include margin(null auto);
+  max-width: 30em;
+  padding: 3em 1.5em;
+}
+
+.component-wrapper {
+  border: 2px solid $base-border-color;
+  padding: $base-spacing * 3;
+}

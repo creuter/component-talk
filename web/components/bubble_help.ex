@@ -32,7 +32,8 @@ defmodule Talk.Component do
         Brady.inline_svg(
           "info",
           class: "bubble-help-icon",
-          "data-bubble-help": id
+          "data-bubble-help": id,
+          "role": "button"
         ),
         content_tag(
           :div,

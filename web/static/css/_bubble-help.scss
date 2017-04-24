@@ -1,0 +1,70 @@
+.bubble-help {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 0.25em;
+  position: relative;
+}
+
+.bubble-help-flyout {
+  $flyout-width: 22em;
+  @include position(absolute, null null 100% calc(50% - #{$flyout-width / 2}));
+  background-color: $base-font-color;
+  border-radius: $base-border-radius;
+  box-shadow: 0 1px 3px rgba($dark-gray, 0.3);
+  color: #fff;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 1em;
+  padding: $base-spacing;
+  width: $flyout-width;
+  z-index: 1;
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+
+  &::after {
+    @include position(absolute, 100% null null 50%);
+    @include triangle($direction: down);
+    color: $base-font-color;
+    content: "";
+    margin-left: -$small-spacing;
+  }
+
+  &.anchor-right {
+    left: auto;
+    right: -$base-spacing;
+
+    &::after {
+      left: auto;
+      right: $base-spacing;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
+
+  p {
+    margin-bottom: $small-spacing;
+  }
+}
+
+.bubble-help-icon {
+  @include size(1em);
+  fill: $medium-gray;
+  opacity: 0.8;
+  vertical-align: middle;
+
+  &:hover,
+  &:focus {
+    fill: $hover-action-color;
+  }
+}
